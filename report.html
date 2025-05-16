@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports</title>
+    <link rel="stylesheet" href="report.css"> <!-- You'll need to create this CSS file -->
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <!-- Assuming a logo and maybe a title here based on previous context -->
+            <div class="logo">
+                <img src="Logo.png" alt="Your Logo">
+                <span>Expenditure System</span>
+            </div>
+
+            <button class="logout-button">Logout</button>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="req_purchase.html">Purchase Request</a></li>
+                <li><a href="#">Request Item</a></li>
+                <li><a href="#">Status</a></li>
+                <li class="active"><a href="report.html">Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="financial-reports">
+                <h2>Finance Report</h2>
+                <div class="report-filters">
+    <label for="month-filter">Month:</label>
+    <select id="month-filter" class="form-control filter-select">
+        <option value="">Select Month</option>
+        <option value="01">January</option>
+        <option value="02">February</option>
+        <option value="03">March</option>
+        <option value="04">April</option>
+        <option value="05">May</option>
+        <option value="06">June</option>
+        <option value="07">July</option>
+        <option value="08">August</option>
+        <option value="09">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+
+    <label for="year-filter">Year:</label>
+    <select id="year-filter" class="form-control filter-select">
+        <option value="">Select Year</option>
+        <!-- You can dynamically generate years here or add a range -->
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <!-- Add more years as needed -->
+    </select>
+
+    <!-- You might want a button to apply the filters -->
+    <button class="btn primary filter-apply-btn">Apply Filters</button>
+</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>No Invoice</th>
+                            <th>Department</th>
+                            <th>Category</th>
+                            <th>Total Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>10-10-2025</td>
+                            <td>32s-8654-8765</td>
+                            <td>Product Design Department</td>
+                            <td>Main Material</td>
+                            <td>1.000.000</td>
+                        
+                        </tr>
+                        
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                     <div class="scroll-indicator">
+                        <div class="scroll-bar"></div>
+                     </div>
+                    <div class="report-actions">
+                        <button class="btn excel-btn"><i class="fas fa-file-excel"></i> Download Excel</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="best-selling-products">
+                <h2>Category Needed</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            
+                            <th>Category</th>
+                            <th>Count Request</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            
+                            <td>Main Material</td>
+                            <td>320</td>
+                           
+                        </tr>
+                    
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                
+            </section>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>

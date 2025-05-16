@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenditure Cycle System</title>
+    <link rel="stylesheet" href="req_purchase.css">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="Logo.png" alt="Efe Gıda Logo"> <!-- Ganti dengan path logo Anda -->
+                <span>Expenditure System</span>
+            </div>
+            <button class="logout-button">Logout</button>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li class="active"><a href="req_purchase.html">Purchase Request</a></li>
+                <li><a href="#">Request Item</a></li>
+                <li><a href="#">Status</a></li>
+                <li><a href="report.html">Report</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="customer-info">
+                <h2>Department Request</h2>
+                <div class="form-group">
+                    <label for="department">Department</label>
+                    <select id="department" class="form-control">
+                        <option value="">-- Select Department --</option>
+                        <option value="production">Production Department</option>
+                        <option value="product-design">Product Design Department</option>
+                        <option value="purchasing">Purchasing Department</option>
+                        <option value="warehouse">Warehouse & Inventory Department</option>
+                        <option value="logistics">Logistics Department</option>
+                        <option value="sales">Sales Department</option>
+                        <option value="marketing">Marketing Department</option>
+                        <option value="customer-service">Customer Service Department</option>
+                        <option value="finance">Finance Department</option>
+                        <option value="hr">Human Resources Department (HR)</option>
+                        <option value="it-ecommerce">IT & E-Commerce Department</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Name</label>
+                    <input type="text" id="phone" >
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" class="form-control" placeholder="Select a date">
+                </div>
+            </section>
+
+            <section class="add-product">
+                <h2>Request</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="material-choice" name="material">
+                            <option value="">-- Select Category --</option> <!-- Opsi default opsional -->
+                            <option value="main-material">Main Material</option>
+                            <option value="coating-materials">Coating Materials</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="bag-straps-and-handles">Bag Straps and Handles</option>
+                            <option value="thread-and-adhesive">Thread and Adhesive</option>
+                            <option value="label-and-branding">Label and Branding</option>
+                            <option value="packaging">Packaging</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="quantity">Quantity</label>
+                        <input type="number" id="quantity" value="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price / item</label>
+                        <input type="number" id="price" class="form-control" placeholder="Enter price" min="0" step="0.01" value="0">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="product-note">Notes</label>
+                    <textarea id="product-note" ></textarea>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn secondary"><i class="fas fa-eraser"></i>Clear</button>
+                    <button class="btn primary"><i class="fas fa-plus"></i>Request</button>
+                </div>
+
+                <div class="product-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Price / item</th>
+                                <th>Notes</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Baris produk akan ditambahkan di sini secara dinamis -->
+                            <tr>
+                                <td colspan="6" class="empty-cart">
+                                    <i class='bxr  bx-warehouse'></i> 
+                                    <p>Request Item</p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <button class="btn add-first-product"><i class="fas fa-plus"></i> Add Request</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Font Awesome for icons (Anda bisa menggunakan CDN atau mengunduh) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+</body>
+</html>

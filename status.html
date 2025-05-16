@@ -102,18 +102,33 @@
       margin-right: 10px;
     }
 
-    .btn-select-vendor {
-      background-color: #28a745;
+    select {
+      background-color: #2a2d44;
       color: white;
-      border: none;
-      padding: 6px 12px;
+      border: 1px solid #555;
+      padding: 6px 10px;
       border-radius: 6px;
-      cursor: pointer;
       font-weight: 600;
     }
 
-    .btn-select-vendor:hover {
-      background-color: #218838;
+    .btn-send {
+      background-color: #6c70f5;
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    .btn-send:hover {
+      background-color: #5a5ddc;
+    }
+
+    .action-cell {
+      display: flex;
+      align-items: center;
     }
   </style>
 </head>
@@ -146,6 +161,7 @@
           <th>Type</th>
           <th>Quantity</th>
           <th>Estimated Price</th>
+          <th>Select Vendor</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -158,7 +174,15 @@
           <td>200 meter</td>
           <td>Rp4.000.000</td>
           <td>
-            <button class="btn-select-vendor" onclick="chooseVendor('MTL001')">Choose Vendor</button>
+            <select id="vendor-MTL001">
+              <option value="">-- Select Vendor --</option>
+              <option value="Vendor A">Vendor A</option>
+              <option value="Vendor B">Vendor B</option>
+              <option value="Vendor C">Vendor C</option>
+            </select>
+          </td>
+          <td class="action-cell">
+            <button class="btn-send" onclick="sendOrder('MTL001')">Send Order</button>
           </td>
         </tr>
         <tr>
@@ -169,7 +193,15 @@
           <td>500 pcs</td>
           <td>Rp1.250.000</td>
           <td>
-            <button class="btn-select-vendor" onclick="chooseVendor('ACC002')">Choose Vendor</button>
+            <select id="vendor-ACC002">
+              <option value="">-- Select Vendor --</option>
+              <option value="Vendor A">Vendor A</option>
+              <option value="Vendor B">Vendor B</option>
+              <option value="Vendor C">Vendor C</option>
+            </select>
+          </td>
+          <td class="action-cell">
+            <button class="btn-send" onclick="sendOrder('ACC002')">Send Order</button>
           </td>
         </tr>
       </tbody>
@@ -177,8 +209,15 @@
   </div>
 
   <script>
-    function chooseVendor(code) {
-      window.location.href = `choose-vendor.html?code=${encodeURIComponent(code)}`;
+    function sendOrder(code) {
+      const selectedVendor = document.getElementById('vendor-' + code).value;
+      if (!selectedVendor) {
+        alert('Please select a vendor for ' + code);
+        return;
+      }
+
+      alert(`Order for ${code} sent to ${selectedVendor}`);
+      // Implement real order submission here
     }
   </script>
 </body>

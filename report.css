@@ -253,3 +253,19 @@ th {
     background-color: #c0392b;
 }
 
+.add-report-btn {
+    display: inline-block;
+    background-color: #6c70f5;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 20px 0;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.add-report-btn:hover {
+    background-color: #5a63d1;
+}

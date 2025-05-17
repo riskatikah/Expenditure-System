@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard - Expenditure System</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <div class="container header-bar">
+      <div class="logo">
+        <img src="Logo.png" alt="Efe Gıda Logo">
+        <span>Expenditure System</span>
+      </div>
+      <button class="logout-button">Logout</button>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container">
+      <ul>
+        <li class="active"><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="req_purchase.html">Purchase Request</a></li>
+        <li><a href="#">Request Item</a></li>
+        <li><a href="#">Status</a></li>
+        <li><a href="report.html">Report</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <div class="container">
+      <section>
+        <div class="date-display">
+          <i class="far fa-calendar-alt"></i>
+          <span id="current-date"></span>
+        </div>
+        <h2>Dashboard Summary</h2>
+        <div class="card-grid">
+          <div class="card">
+            <i class="fas fa-file-alt"></i>
+            <p>Total Requests</p>
+            <h3>150</h3>
+          </div>
+          <div class="card">
+            <i class="fas fa-check-circle"></i>
+            <p>Approved</p>
+            <h3>120</h3>
+          </div>
+          <div class="card">
+            <i class="fas fa-times-circle"></i>
+            <p>Rejected</p>
+            <h3>30</h3>
+          </div>
+          <div class="card">
+            <i class="fas fa-coins"></i>
+            <p>Total Cost</p>
+            <h3>Rp 1.000.000</h3>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Cost Breakdown</h2>
+        <div class="chart-wrapper">
+          <canvas id="costChart"></canvas>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    const currentDate = new Date().toLocaleDateString("id-ID", {
+      weekday: "long", year: "numeric", month: "long", day: "numeric"
+    });
+    document.getElementById("current-date").textContent = currentDate;
+
+    const ctx = document.getElementById('costChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'pie',
+      data: {
+        labels: ['Main Material', 'Coating Materials', 'Accessories'],
+        datasets: [{
+          data: [500000, 300000, 200000],
+          backgroundColor: ['#6c70f5', '#28a745', '#f39c12'],
+        }]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#fff'
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

@@ -5,158 +5,267 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Status - Approved Requests</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #1a1c2d;
-      color: #fff;
+    font-family: 'Inter', sans-serif; /* Using the Inter font */
+    margin: 0;
+    background-color: #1a1c2d;
+    color: #fff;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    max-width: 1200px;
+    /* Removed padding top/bottom here as main content will have it */
+    box-sizing: border-box;
+}
+
+header {
+    background-color: #222537;
+    padding: 10px 0;
+    border-bottom: 1px solid #333;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #fff;
+}
+
+.logo img {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.logout-button {
+    background-color: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #c0392b;
+}
+
+nav {
+    background-color: #2a2e45;
+    padding: 0;
+}
+
+nav .container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav .container ul li {
+    margin-right: 20px;
+}
+
+nav .container ul li:last-child {
+    margin-right: 0;
+}
+
+nav .container ul li a {
+    text-decoration: none;
+    color: #ccc;
+    padding: 15px 0;
+    display: block;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+nav .container ul li a:hover {
+    color: #fff;
+}
+
+nav .container ul li.active a {
+    color: #6c70f5;
+    border-bottom: 2px solid #6c70f5;
+}
+
+/* Main content area below navigation */
+.container.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px; /* Space after nav */
+    padding-bottom: 20px;
+    box-sizing: border-box;
+}
+
+h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    border-bottom: 1px solid #444;
+    padding-bottom: 10px;
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #2a2e45;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    text-align: left;
+    padding: 12px 15px;
+    border-bottom: 1px solid #3a3f5a;
+}
+
+th {
+    background-color: #3a3f5a;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+tbody tr:hover {
+    background-color: #3a3f5a;
+}
+
+td img {
+    width: 40px;
+    border-radius: 8px;
+    vertical-align: middle;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+/* Style for select dropdowns (Vendor and Status) */
+select {
+    padding: 8px 12px; /* Adjust padding */
+    border-radius: 6px;
+    border: 1px solid #555; /* Darker border */
+    background-color: #3a3f5a; /* Darker background */
+    color: #fff;
+    font-weight: 600;
+    appearance: none; /* Remove default dropdown arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23ffffff%22%20d%3D%22M287%2C134.9L145.2%2C277.6c-2.8%2C2.8-7.8%2C2.8-10.6%2C0L5.4%2C134.9c-2.8-2.8-2.8-7.8%2C0-10.6l10.6-10.6c2.8-2.8%2C7.8-2.8%2C10.6%2C0l115.6%2C115.6l115.6-115.6c2.8-2.8%2C7.8-2.8%2C10.6%2C0l10.6%2C10.6C289.8%2C127.1%2C289.8%2C132.2%2C287%2C134.9z%22%2F%3E%3C%2Fsvg%3E'); /* Custom white dropdown arrow */
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 12px auto;
+    cursor: pointer;
+    min-width: 120px; /* Give dropdowns a minimum width */
+}
+
+/* Style for the send order button */
+.btn-send {
+    background-color: #28a745; /* Green color */
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.btn-send:hover {
+    background-color: #218838;
+}
+
+/* Flex container for action cell */
+.action-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between select and button */
+}
+
+/* Basic responsiveness */
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        gap: 10px;
     }
 
-    header {
-      background-color: #222537;
-      padding: 15px 0;
-      border-bottom: 1px solid #333;
+    nav .container ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .branding {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .logo {
-      height: 40px;
-    }
-
-    .system-title {
-      font-weight: 700;
-      font-size: 1.2em;
-      color: white;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-    }
-
-    .nav-item {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: 600;
-      padding: 10px;
-      border-radius: 6px;
-    }
-
-    .nav-item:hover {
-      background-color: #333;
-      color: white;
-    }
-
-    .nav-item.active {
-      color: #6c70f5;
-    }
-
-    .container {
-      width: 90%;
-      margin: 40px auto;
-      max-width: 1200px;
-    }
-
-    h2 {
-      margin-bottom: 10px;
-      border-bottom: 1px solid #444;
-      padding-bottom: 10px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 40px;
-    }
-
-    th, td {
-      text-align: left;
-      padding: 12px;
-      border-bottom: 1px solid #444;
-    }
-
-    th {
-      background-color: #3a3f5a;
-      color: white;
-    }
-
-    td img {
-      width: 40px;
-      border-radius: 8px;
-      vertical-align: middle;
-      margin-right: 10px;
-    }
-
-    select {
-      background-color: #2a2d44;
-      color: white;
-      border: 1px solid #555;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-weight: 600;
-    }
-
-    .btn-send {
-      background-color: #6c70f5;
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-left: 10px;
-    }
-
-    .btn-send:hover {
-      background-color: #5a5ddc;
+    nav .container ul li {
+        margin-right: 0;
     }
 
     .action-cell {
-      display: flex;
-      align-items: center;
+        flex-direction: column; /* Stack items on small screens */
+        align-items: flex-start;
+        gap: 5px;
     }
+
+    td, th {
+        padding: 10px;
+    }
+
+    select {
+        min-width: auto; /* Remove min-width on small screens */
+        width: 100%; /* Allow dropdowns to take full width */
+    }
+}
   </style>
 </head>
 <body>
   <header>
-    <div class="nav-container">
-      <div class="branding">
-        <img src="Logo.png" alt="Efe Gıda Logo" class="logo">
-        <span class="system-title">Expenditure System</span>
+    <div class="container">
+      <div class="logo">
+        <img src="Logo.png" alt="Efe Gıda Logo">
+        <span>Expenditure System</span>
       </div>
-      <nav>
-        <a href="#" class="nav-item">Dashboard</a>
-        <a href="req_purchase.html" class="nav-item">Purchase Request</a>
-        <a href="req_item.html" class="nav-item">Request Item</a>
-        <a href="#" class="nav-item active">Status</a>
-        <a href="#" class="nav-item">Report</a>
-      </nav>
+      <button class="logout-button">Logout</button>
     </div>
   </header>
 
-  <div class="container">
+  <nav>
+    <div class="container">
+      <ul>
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="req_purchase.html">Purchase Request</a></li>
+        <li><a href="req_item.html">Request Item</a></li>
+        <li class="active"><a href="#">Status</a></li>
+        <li><a href="report.html">Report</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container content"> <!-- Changed class to .container.content -->
     <h2>Approved Purchase Requests</h2>
 
     <table>
       <thead>
         <tr>
           <th>Date</th>
-          <th>Code</th>
           <th>Material Name</th>
           <th>Type</th>
           <th>Quantity</th>
@@ -168,8 +277,7 @@
       <tbody>
         <tr>
           <td>2025-05-16</td>
-          <td>MTL001</td>
-          <td><img src="https://i.ibb.co/ZgKXhz6/pu-leather.jpg" alt="PU Leather"> PU Leather</td>
+          <td> PU Leather</td>
           <td>Main Material</td>
           <td>200 meter</td>
           <td>Rp4.000.000</td>
@@ -187,8 +295,7 @@
         </tr>
         <tr>
           <td>2025-05-16</td>
-          <td>ACC002</td>
-          <td><img src="https://i.ibb.co/jRTq8d7/zipper.jpg" alt="Zipper"> Metal Zipper</td>
+          <td> Metal Zipper</td>
           <td>Accessory</td>
           <td>500 pcs</td>
           <td>Rp1.250.000</td>
